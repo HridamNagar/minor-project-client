@@ -11,6 +11,20 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+form {
+  display: flex;
+  flex-direction: column;
+}
+input {
+  width: 400px;
+  height: 30px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 1px 1px 0.8px #0c1d2e;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
 
 .App-header {
   background-color: #282c34;
@@ -21,6 +35,21 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+.error {
+  font-size: 12px;
+  color: rgb(122, 12, 22);
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+#Buttonreg {
+  height: 46px;
+  margin-top: 14px;
+  background-color: rgb(218, 255, 6);
+  border-radius: 8px;
+  border: 1px solid rgb(8, 68, 6);
+  box-shadow: 1px 2px 3px #252525aa;
+  font-size: 15px;
 }
 #icon1 {
   font-size: larger;
