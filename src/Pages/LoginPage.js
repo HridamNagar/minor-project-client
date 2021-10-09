@@ -17,17 +17,13 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useFormik } from 'formik';
 
 export function SLogin() {
-  // A custom validation function. This must return an object
-
-  // which keys are symmetrical to our values/initialValues
-
   const validate = (values) => {
     const errors = {};
 
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (values.email.length < 4) {
-      errors.email = 'Must be 5 characters or more';
+    if (!values.enroll) {
+      errors.enroll = 'Required';
+    } else if (values.enroll.length < 11) {
+      errors.enroll = 'Must be 11 digits';
     }
 
     if (!values.password) {
@@ -49,7 +45,7 @@ export function SLogin() {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      enroll: '',
       password: '',
       repassword: '',
     },
@@ -60,21 +56,21 @@ export function SLogin() {
   });
 
   return (
-    <div>
+    <div className='LoginPage'>
       <h1>Register </h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor='email'>Email Address</label>
+        <label htmlFor='enroll'>Enrollment Number</label>
 
         <input
-          id='email'
-          name='email'
-          type='email'
+          id='enroll'
+          name='enroll'
+          type='text'
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.email}
+          value={formik.values.enroll}
         />
-        {formik.touched.email && formik.errors.email ? (
-          <div className='error'>{formik.errors.email}</div>
+        {formik.touched.enroll && formik.errors.enroll ? (
+          <div className='error'>{formik.errors.enroll}</div>
         ) : null}
         <label htmlFor='password'>Password</label>
         <input
@@ -102,7 +98,9 @@ export function SLogin() {
           <div className='error'>{formik.errors.repassword}</div>
         ) : null}
 
-        <button type='submit'>Register</button>
+        <button id='Loginbutton' type='submit'>
+          Register
+        </button>
       </form>
     </div>
   );

@@ -1,3 +1,11 @@
+body {
+  justify-content: center;
+  color: white;
+  align-items: center;
+
+  background: #282c34; /* fallback for old browsers */
+}
+
 .App {
   text-align: center;
 }
@@ -11,6 +19,13 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.LoginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Cabin', sans-serif;
+  padding-top: 300px;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -20,12 +35,12 @@ input {
   height: 30px;
   padding: 10px;
   border-radius: 8px;
+  font-size: large;
   border: none;
   box-shadow: 1px 1px 0.8px #0c1d2e;
   margin-top: 10px;
   margin-bottom: 14px;
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -60,7 +75,22 @@ input {
 .App-link {
   color: #61dafb;
 }
+#Loginbutton {
+  height: 46px;
+  margin-top: 14px;
+  background-color: rgb(218, 255, 6);
+  border-radius: 8px;
+  border: 1px solid rgb(8, 68, 6);
+  box-shadow: 1px 2px 3px #252525aa;
+  font-size: 15px;
+}
+.error {
+  font-size: 12px;
+  color: red;
+  margin-top: -10px;
 
+  margin-bottom: 10px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
