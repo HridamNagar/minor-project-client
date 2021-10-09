@@ -1,7 +1,7 @@
 import HomePage from './Pages/Homepage';
 import Register from './Pages/RegisterPage';
 import FacultyLogin from './Pages/FacultyLoginPage';
-import SLogin from './Pages/LoginPage';
+import { SLogin } from './Pages/LoginPage';
 import RegisterFaculty from './Pages/RegisterFacultyPage';
 import Update from './Pages/UpdatePage';
 import Search from './Pages/SearchPage';

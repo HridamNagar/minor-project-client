@@ -11,10 +11,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { SLogin } from './LoginPage';
 import { Link, Route } from 'react-router-dom';
-const Register = () => (
-  <div>
-    <h1>Register Page</h1>
-  </div>
-);
+const Register = () => <SLogin />;
 export default Register;
