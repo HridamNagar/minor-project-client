@@ -26,6 +26,13 @@ body {
   font-family: 'Cabin', sans-serif;
   padding-top: 300px;
 }
+.Updatepage {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Cabin', sans-serif;
+  padding-top: 30px;
+  padding-left: 30px;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -79,6 +86,29 @@ input {
   height: 46px;
   margin-top: 14px;
   background-color: rgb(218, 255, 6);
+  border-radius: 8px;
+  border: 1px solid rgb(8, 68, 6);
+  box-shadow: 1px 2px 3px #252525aa;
+  font-size: 15px;
+  min-width: 46px;
+  max-width: 500px;
+}
+#cross {
+  height: 46px;
+  margin-top: 14px;
+  background-color: red;
+  border-radius: 8px;
+  border: 1px solid rgb(8, 68, 6);
+  box-shadow: 1px 2px 3px #252525aa;
+  font-size: 15px;
+  min-width: 46px;
+}
+#Internbutton {
+  height: 46px;
+  width: 46px;
+  min-width: 100px;
+  margin-top: 14px;
+  background-color: #1976d2;
   border-radius: 8px;
   border: 1px solid rgb(8, 68, 6);
   box-shadow: 1px 2px 3px #252525aa;
