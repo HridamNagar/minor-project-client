@@ -3,12 +3,14 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import TextField from '@mui/material/TextField';
-
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import '../App.css';
-import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
-
 import { useFormik } from 'formik';
-import ReactDOM from 'react-dom';
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 
 const Update = () => {
@@ -16,6 +18,7 @@ const Update = () => {
     <div
       style={{
         textAlign: 'left',
+        marginLeft: '10px',
       }}
     >
       <Updatejsx />
@@ -80,7 +83,11 @@ function Updatejsx() {
       alert(JSON.stringify(values, null, 2));
     },
   });
+  const [age, setAge] = React.useState('');
 
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <div className='Updatepage'>
       <h1>Your Form </h1>
@@ -121,11 +128,12 @@ function Updatejsx() {
         {formik.touched.enroll && formik.errors.enroll ? (
           <div className='error'>{formik.errors.enroll}</div>
         ) : null}
+
         <label htmlFor='enroll'>Date of Birth</label>
         <input
           id='dob'
           name='dob'
-          type='text'
+          type='date'
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.dob}
@@ -133,6 +141,7 @@ function Updatejsx() {
         {formik.touched.dob && formik.errors.dob ? (
           <div className='error'>{formik.errors.dob}</div>
         ) : null}
+
         <label htmlFor='enroll'>Country</label>
         <input
           id='country'
