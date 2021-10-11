@@ -38,9 +38,34 @@ body {
   padding-top: 30px;
   padding-left: 30px;
 }
+#date {
+  width: 400px;
+  height: 30px;
+  padding: 10px;
+  color: black;
+  background-color: white;
+  border-radius: 8px;
+  font-size: large;
+  border: none;
+  box-shadow: 1px 1px 0.8px #0c1d2e;
+}
 form {
   display: flex;
   flex-direction: column;
+}
+#select {
+  width: 50px;
+  height: 30px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: large;
+  border: none;
+  box-shadow: 1px 1px 0.8px #0c1d2e;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+.demo-simple-select-label {
+  width: 50px;
 }
 input {
   width: 400px;
