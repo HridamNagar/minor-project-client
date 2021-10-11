@@ -1,22 +1,21 @@
 import '../App.css';
-import { Button } from '@mui/material';
-import { AppBar } from '@mui/material';
-import { Toolbar } from '@mui/material';
-import { Typography } from '@mui/material';
-import HowToRegIcon from '@mui/icons-material/HowToReg';
-import UpdateIcon from '@mui/icons-material/Update';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import '../App.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Link, Route } from 'react-router-dom';
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useFormik } from 'formik';
 
-export function SLogin() {
+const Login = (props) => {
+  return <SLogin histro={props.history} />;
+};
+function SLogin(props) {
   const validate = (values) => {
     const errors = {};
 
@@ -34,12 +33,6 @@ export function SLogin() {
       errors.password = 'Must not be 12345678 !!!';
     }
 
-    if (!values.repassword) {
-      errors.repassword = 'Required';
-    } else if (values.repassword !== values.password) {
-      errors.repassword = "Second password doesn't match";
-    }
-
     return errors;
   };
 
@@ -47,17 +40,16 @@ export function SLogin() {
     initialValues: {
       enroll: '',
       password: '',
-      repassword: '',
     },
     validate,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      props.histro.push('/update');
     },
   });
 
   return (
     <div className='LoginPage'>
-      <h1>Register </h1>
+      <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor='enroll'>Enrollment Number</label>
 
@@ -85,23 +77,11 @@ export function SLogin() {
           <div className='error'>{formik.errors.password}</div>
         ) : null}
 
-        <label htmlFor='repassword'>Password again</label>
-        <input
-          id='repassword'
-          name='repassword'
-          type='password'
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.repassword}
-        />
-        {formik.touched.repassword && formik.errors.repassword ? (
-          <div className='error'>{formik.errors.repassword}</div>
-        ) : null}
-
         <button id='Loginbutton' type='submit'>
-          Register
+          Log In
         </button>
       </form>
     </div>
   );
 }
+export default Login;
