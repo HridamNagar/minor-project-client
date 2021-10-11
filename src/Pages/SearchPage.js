@@ -1,20 +1,66 @@
 import '../App.css';
-import { Button } from '@mui/material';
-import { AppBar } from '@mui/material';
-import { Toolbar } from '@mui/material';
-import { Typography } from '@mui/material';
-import HowToRegIcon from '@mui/icons-material/HowToReg';
-import UpdateIcon from '@mui/icons-material/Update';
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import '../App.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { Link, Route } from 'react-router-dom';
-const Search = () => (
-  <div>
-    <h1>Search Page</h1>
-  </div>
-);
+import React from 'react';
+import { useFormik } from 'formik';
+
+const Search = (props) => {
+  return <SLogin histro={props.history} />;
+};
+function SLogin(props) {
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.enroll) {
+      errors.enroll = 'Required';
+    } else if (values.enroll.length < 11) {
+      errors.enroll = 'Must be 11 digits';
+    }
+
+    return errors;
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      enroll: '',
+    },
+    validate,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
+  return (
+    <div className='LoginPage'>
+      <h1>Search Student by Enrollment Number</h1>
+      <form onSubmit={formik.handleSubmit}>
+        <label htmlFor='enroll'>Enrollment Number</label>
+
+        <input
+          id='enroll'
+          name='enroll'
+          type='text'
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.enroll}
+        />
+        {formik.touched.enroll && formik.errors.enroll ? (
+          <div className='error'>{formik.errors.enroll}</div>
+        ) : null}
+
+        <button id='Loginbutton' type='submit'>
+          Search-{formik.values.enroll}
+        </button>
+      </form>
+    </div>
+  );
+}
 export default Search;
