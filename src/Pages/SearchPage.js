@@ -11,6 +11,7 @@ import '@fontsource/roboto/700.css';
 import { Link, Route } from 'react-router-dom';
 import React from 'react';
 import { useFormik } from 'formik';
+import axios from "axios";
 
 const Search = (props) => {
   return <SLogin histro={props.history} />;
@@ -34,6 +35,13 @@ function SLogin(props) {
     },
     validate,
     onSubmit: (values) => {
+     let url = "http://localhost:3001/students/find";
+      const data=values;
+      axios.post(url, data).then((response) => {
+        console.log(response);
+        alert(response.data.error);
+
+      });
       alert(JSON.stringify(values, null, 2));
     },
   });
