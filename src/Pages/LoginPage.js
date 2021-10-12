@@ -56,11 +56,10 @@ function SLogin(props) {
           alert(response.data.error);
         } else {
           sessionStorage.setItem("accessToken", response.data.accessToken);
-  
-         // history.push("/introduction");
+           props.histro.push('/update');
         }
       });
-    //  props.histro.push('/update');
+     
     },
   });
 

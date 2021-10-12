@@ -59,10 +59,10 @@ function RegisterFaculty(props) {
         console.log(response);
         alert(response.data.error);
         if(response.data.code==1){
-         //history.push('/introduction');
+        props.histro.push('/facultylogin');
         }
       });
-      //props.histro.push('/facultylogin');
+      
     },
   });
 

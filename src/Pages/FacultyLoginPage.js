@@ -46,12 +46,12 @@ function FacultyLoginjsx(props) {
           alert(response.data.error);
         } else {
           sessionStorage.setItem("accessToken", response.data.accessToken);
-  
+            props.histro.push('/search');
          // history.push("/introduction");
         }
       });
       alert(JSON.stringify(values, null, 2));
-      props.histro.push('/search');
+      
     },
   });
 
