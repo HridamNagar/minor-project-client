@@ -5,6 +5,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import React from 'react';
 import { useFormik } from 'formik';
+import axios from "axios";
 
 const FacultyLogin = (props) => {
   return <FacultyLoginjsx histro={props.history} />;
@@ -33,6 +34,22 @@ function FacultyLoginjsx(props) {
     },
     validate,
     onSubmit: (values) => {
+      let url;
+
+      url = "http://localhost:3001/staff/login";
+  
+      axios.post(url, values).then((response) => {
+       
+        console.log(response);
+  
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          sessionStorage.setItem("accessToken", response.data.accessToken);
+  
+         // history.push("/introduction");
+        }
+      });
       alert(JSON.stringify(values, null, 2));
       props.histro.push('/search');
     },

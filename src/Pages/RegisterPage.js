@@ -11,6 +11,7 @@ import '@fontsource/roboto/700.css';
 import { Link, Route } from 'react-router-dom';
 import React from 'react';
 import { useFormik } from 'formik';
+import axios from "axios";
 
 const Register = (props) => {
   return <Registerform histro={props.history} />;
@@ -49,8 +50,22 @@ function Registerform(props) {
     },
     validate,
     onSubmit: (values) => {
+
+
+
       alert(JSON.stringify(values, null, 2));
-      props.histro.push('/login');
+      let url;
+      const data={enroll:values.enroll,password: values.password }
+
+      url = "http://localhost:3001/students/register";
+
+      axios.post(url, data).then((response) => {
+        console.log(response);
+        alert(response.data.error);
+        if(response.data.code==1){
+         //history.push('/introduction');
+        }
+      });
     },
   });
 

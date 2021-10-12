@@ -5,6 +5,7 @@ import '@fontsource/roboto/700.css';
 import '../App.css';
 import React from 'react';
 import { useFormik } from 'formik';
+import axios from "axios";
 
 const Register = (props) => {
   return <RegisterFaculty histro={props.history} />;
@@ -34,9 +35,7 @@ function RegisterFaculty(props) {
     }
     if (!values.access_code) {
       errors.access_code = 'Required';
-    } else if (values.access_code !== '12345') {
-      errors.access_code = "Access Code doesn't match";
-    }
+    } 
 
     return errors;
   };
@@ -46,11 +45,24 @@ function RegisterFaculty(props) {
       enroll: '',
       password: '',
       repassword: '',
+      access_code: ''
     },
     validate,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      props.histro.push('/facultylogin');
+      let url;
+      const data={enroll:values.enroll,password: values.password, accessCode: values.access_code }
+
+      url = "http://localhost:3001/staff/register";
+
+      axios.post(url, data).then((response) => {
+        console.log(response);
+        alert(response.data.error);
+        if(response.data.code==1){
+         //history.push('/introduction');
+        }
+      });
+      //props.histro.push('/facultylogin');
     },
   });
 

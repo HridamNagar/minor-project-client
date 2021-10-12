@@ -11,6 +11,7 @@ import '@fontsource/roboto/700.css';
 import { Link, Route } from 'react-router-dom';
 import React from 'react';
 import { useFormik } from 'formik';
+import axios from "axios";
 
 const Login = (props) => {
   return <SLogin histro={props.history} />;
@@ -43,7 +44,23 @@ function SLogin(props) {
     },
     validate,
     onSubmit: (values) => {
-      props.histro.push('/update');
+      let url;
+
+      url = "http://localhost:3001/students/login";
+  
+      axios.post(url, values).then((response) => {
+       
+        console.log(response);
+  
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          sessionStorage.setItem("accessToken", response.data.accessToken);
+  
+         // history.push("/introduction");
+        }
+      });
+    //  props.histro.push('/update');
     },
   });
 
@@ -78,7 +95,7 @@ function SLogin(props) {
         ) : null}
 
         <button id='Loginbutton' type='submit'>
-          Log In
+          Register
         </button>
       </form>
     </div>
